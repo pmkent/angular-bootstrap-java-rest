@@ -10,7 +10,7 @@ To build and run this application you're going to need the following installed i
 
 This web application has been tested in Windows 7, 8 and on a Mac PC.
 
-If you're reading this you've probably had of all of or some of the following bleeding edge web technologies:
+If you're reading this you've probably heard of all of or some of the following bleeding edge web technologies:
 -AngularJS (open-source web application framework maintained by Google and a community of individual developers)
 -Bootstrap (Front-end framework tools for building websites and web applications)
 -REST (Representational state transfer)
