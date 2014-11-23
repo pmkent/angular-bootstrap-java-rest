@@ -1,0 +1,49 @@
+<fieldset>
+    <legend>
+        Users
+        <a class='btn btn-primary pull-right' role='button' href='#/user-create'>
+            <i class='fa fa-plus-circle icon-white'> Create New User</i>
+        </a>
+    </legend>
+</fieldset>
+
+<div class="form-group has-feedback">
+    <label class="control-label">Search User List</label>
+    <input type="text" name="userSearch" ng-model="userSearch" placeholder="Search Users" class="form-control"/>
+    <i class="glyphicon glyphicon-search form-control-feedback"></i>
+</div>
+
+<table class="table table-bordered table-hover" data-ng-show="users.length">
+<!--table class="table table-striped" data-ng-show="users.length">
+<table class="table table-condensed" data-ng-show="users.length"-->
+    <thead>
+        <tr>
+            <th class='hidden-xs hidden-sm'>#</th>
+            <th>Name</th>
+            <th>City</th>
+            <th class='hidden-xs'>State</th>
+            <th class='hidden-xs hidden-sm'>Gender</th>
+            <th class='hidden-xs'>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="user in users | filter:userSearch" ng-click="editUser(user)" >
+            <td class='hidden-xs hidden-sm'>{{$index + 1}}</td>
+            <td>{{ user.lastName }}, {{ user.firstName }}</td>
+            <td>{{ user.address.city }}</td>
+            <td class='hidden-xs'>{{ user.address.state }}</td>
+            <td class='hidden-xs hidden-sm'>{{ user.gender }}</td>
+            <td class='hidden-xs'>
+                <a href='#' ng-really-message='Are you sure you want to delete {{user.firstName}} {{user.lastName}}?' ng-really-click='deleteUser(user)'>
+                    <i class='fa fa-trash-o icon-white'></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class='form-actions'>
+    <a class="btn btn-primary" role="button" href='#/user-create' >
+        <i class="fa fa-plus-square icon-white"> Create New User</i>
+    </a>    
+</div>

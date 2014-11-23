@@ -4,8 +4,9 @@ angular-bootstrap-java-rest
 Angular, Bootstrap, Java REST services Web application.
 
 To build and run this application you're going to need the following installed in your system.
--Java - JDK 1.6+
--Apache Maven 3+
+-Java - JDK 1.6+,
+-Apache Maven 3+,
+-Mongo DB version 2+
 
 This web application has been tested in Windows 7, 8 and on a Mac PC.
 
@@ -34,9 +35,12 @@ Step 1:
 Clone the application from the url: https://github.com/pmkent/angular-bootstrap-java-rest
 
 Step 2:
-Navigate to the folder /angular-bootstrap-java-rest and issue the command: mvn clean build jetty:run
+Start your localhost mongodb
 
 Step 3:
+Navigate to the folder /angular-bootstrap-java-rest and issue the command: mvn clean build jetty:run
+
+Step 4:
 Open your favorite web browser and navigate to http://localhost:8080/app/pages/user/index.html
 
 I'd like to acknowledge the useful help I googled from all great developers out there who created JSFiddles, Plunkers to help me get all this together. Special credit to Stacktrace for providing the most useful solutions. I modeled most of the AngularJS piece using code from Draptik's ideas and redoing the backend with Jersey instead of Guice.

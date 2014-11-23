@@ -1,0 +1,130 @@
+<div id="messages" class="alert alert-success" data-ng-show="messages" data-ng-bind="messages"></div>
+
+<form name='userForm' novalidate>
+    <fieldset>
+        <legend>{{user.firstName}} {{user.lastName}} User Detail</legend>
+        <div class='row'>
+            <div class='col-sm-5'>    
+                <div class='form-group'>
+                    <label for="firstName">First Name:</label>
+                    <span class="label label-danger" data-ng-show="userForm.firstName.$invalid">is required!</span>
+                    <input class="form-control" name="firstName" ng-model="user.firstName" required="true" size="30" type="text" />
+                </div>
+            </div>
+            <div class='col-sm-2'>
+                <div class='form-group'>
+                    <label for="middleInitial">MI:</label>
+                    <input class="form-control" ng-model="user.middleInitial" size="30" type="text" />
+                </div>
+            </div>
+            <div class='col-sm-5'>
+                <div class='form-group'>
+                    <label for="lastName">Last Name:</label>
+                    <span class="label label-danger" data-ng-show="userForm.lastName.$invalid">is required!</span>
+                    <input class="form-control" name="lastName" ng-model="user.lastName" required="true" size="30" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-sm-6'>
+                <div class='form-group'>
+                    <label for="gender">Your Gender:</label>
+                    <select ng-model="user.gender" ng-options="id as value for (id, value) in genderListOptions" class="form-control">
+                      <option value=''>Select</option>
+                    </select>
+                </div>
+            </div>
+            <div class='col-sm-6'>
+                <div class='form-group'>
+                    <label for='dateOfBirth'>Date of Birth</label>
+                    <p class='input-group'>
+                        <input type='text' ng-model='user.dateOfBirth' class='form-control' datepicker-popup='{{format}}' is-open='opened'>
+                        <span class='input-group-btn'>
+                            <button class='btn btn-success' ng-click='open($event)'>
+                                <i class='fa fa-calendar-o icon-white'></i>
+                            </button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Address</legend>         
+		<div class='row'>
+			<div class='col-sm-12'>    
+				<div class='form-group'>
+					<label for='street'>Number/Street:</label>
+					<input type='text' ng-model='user.address.street' class='form-control'>
+				</div>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-sm-4'>    
+				<div class='form-group'>
+					<label for="city">City:</label>
+					<input type='text' ng-model='user.address.city' class='form-control'>
+				</div>
+			</div>
+			<div class='col-sm-4'>    
+				<div class='form-group'>
+					<label for="state">State:</label>
+					<select ng-model='user.address.state' ng-options='id as value for (id,value) in stateListOptions' class='form-control'>
+						<option value=''>Select</option>
+					</select>
+				</div>
+			</div>
+			<div class='col-sm-4'>    
+				<div class='form-group'>
+					<label for='zip'>Zip Code:</label>
+					<input ng-model='user.address.zip' class='form-control'>
+				</div>
+			</div>
+		</div>
+    </fieldset>
+    <fieldset>
+        <legend>Phone/Email Address</legend>
+		<div class='row'>
+			<div class='col-sm-8'>
+				<div class='form-group'>
+					<label for='email'>Email:</label>
+					<input type='email' ng-model='user.email' class='form-control'>
+				</div>
+			</div>
+			<div class='col-sm-4'>
+				<div class='form-group'>
+					<label for='phone'>Phone Number: </label>
+					<input ng-model='user.phone' class='form-control' type='text'>
+				</div>
+			</div>                    
+		</div>
+    </fieldset>
+    <fieldset>
+        <legend>Comments</legend>
+        <div class='row'>
+            <div class='col-sm-12'>
+                <div class='form-group'>
+                    <label for="comments">Your Comments:</label>
+                    <textarea rows="3" class="form-control" id="comments" name="comments" ng-model="user.comments" placeholder="Your Comments Go Here"></textarea>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Form Actions:</legend>
+		<div class="row">
+			<div class="col-sm-5 col-sm-offset-5">
+				<a class="btn btn-primary" role="button" ng-click="saveUser()" ng-disabled="userForm.$invalid">
+					<i class="fa fa-save icon-white"> Save</i>
+				</a>
+				<a class="btn btn-success" role="button" ng-click="cancel()">
+					<i class="fa fa-backward icon-white"> Cancel</i>
+				</a>
+				<input ng-show='!userEditForm' type="reset" class="btn btn-info" value="Reset">
+				<a class='btn btn-danger' ng-show='userEditForm' ng-really-message='Are you sure you want to delete {{user.firstName}} {{user.lastName}}?' ng-really-click='deleteUser()'>
+					<i class='fa fa-times icon-white'> Delete</i>
+				</a>
+			</div>
+		</div>
+    </fieldset>
+</form>
