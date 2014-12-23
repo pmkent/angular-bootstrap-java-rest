@@ -1,6 +1,16 @@
+<fieldset>
+    <legend class='col-sm-9 pull-left'>User Detail</legend>
+    <div class='pull-right'>
+        <div class='form-group col-sm-3'>
+            <a class='btn btn-info' href='#'>
+              <i class='fa fa-list icon-white'> User List</i>
+            </a>
+        </div>
+    </div>
+</fieldset>
 <div id="messages" class="alert alert-success" data-ng-show="messages" data-ng-bind="messages"></div>
 
-<form name='userForm' novalidate>
+<form id='userForm' novalidate>
     <fieldset>
         <legend>{{user.firstName}} {{user.lastName}} User Detail</legend>
         <div class='row'>

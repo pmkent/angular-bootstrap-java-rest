@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('user.controllers', ['ui.bootstrap']);
+var app = angular.module('user.controllers', ['ui.bootstrap','smart-table']);
 
 // Regular Javascript function for functions shared by AngularJS contollers
 function UserController ($scope,JSONDataFactory,UsersFactory,$location) {
@@ -39,6 +39,10 @@ app.controller('UserListCtrl', ['$scope', 'UsersFactory', 'UserFactory', '$locat
         };
 
         $scope.users = UsersFactory.query();
+
+        //copy the references (you could clone ie angular.copy but then have to go through a dirty checking for the matches)
+        $scope.userCollection = [].concat($scope.users);
+        $scope.itemsByPage = 2;
     }
 ]);
 
@@ -52,15 +56,15 @@ app.controller('UserDetailCtrl', ['$scope', '$routeParams', 'UserFactory', 'JSON
             $location.path('/user-list');
         };
 
-        $scope.user = UserFactory.show({id: $routeParams.id});
-
         $scope.deleteUser = function() {
-            alert('Im going to delete this one user '+$scope.user.id);
+            //alert('Im going to delete this one user '+$scope.user.id);
             UserFactory.delete({ id : $scope.user.id });
             $location.path('/user-list');
         };      
 
         UserController.call(this,$scope,JSONDataFactory,UsersFactory,$location);
+
+        $scope.user = UserFactory.show({id: $routeParams.id});
     }
 
 ]);
@@ -72,13 +76,13 @@ app.controller('UserCreationCtrl', ['$scope', 'UsersFactory', 'JSONDataFactory',
         $scope.message = 'Profile create screen';
 
         $scope.userEditForm = false;
-        
-        $scope.user = {};
 
         $scope.cancel = function () {
             $location.path('/user-list');
         };
 
         UserController.call(this,$scope,JSONDataFactory,UsersFactory,$location);
+
+        $scope.user = {};
     }
 ]);
