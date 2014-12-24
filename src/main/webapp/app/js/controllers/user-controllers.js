@@ -42,7 +42,7 @@ app.controller('UserListCtrl', ['$scope', 'UsersFactory', 'UserFactory', '$locat
 
         //copy the references (you could clone ie angular.copy but then have to go through a dirty checking for the matches)
         $scope.userCollection = [].concat($scope.users);
-        $scope.itemsByPage = 2;
+        $scope.itemsByPage = 5;
     }
 ]);
 
