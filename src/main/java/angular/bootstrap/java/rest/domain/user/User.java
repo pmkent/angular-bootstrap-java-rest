@@ -92,6 +92,20 @@ public class User {
 	}
 
 	/**
+	 * @return the nickName
+	 */
+	public String getNickName() {
+		return nickName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	/**
 	 * @return the dateOfBirth
 	 */
 	public Date getDateOfBirth() {
