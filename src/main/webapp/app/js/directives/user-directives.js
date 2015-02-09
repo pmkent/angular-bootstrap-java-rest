@@ -59,3 +59,17 @@ app.directive('ngReallyClick', ['$modal',
     }
   }
 ]);
+
+app.directive('listItems', function() {
+  return {
+    restrict : 'E',
+    scope : {
+      data : '='
+    },
+    transclude : true,
+    templateUrl : 'templates/directives/things.html',
+    controller : function($scope) {
+      //console.log('Im here'+$scope.data);
+    }
+  };
+});

@@ -51,7 +51,7 @@
         <tr>
             <th st-sort="firstName">First Name</th>
             <th st-sort="lastName">Last Name</th>
-            <th st-sort="dateOfBirth">DOB</th>
+            <th st-sort="dateOfBirth" class='hidden-sm hidden-xs'>DOB</th>
             <th st-sort="address.state">State</th>
         </tr>
     </thead>
@@ -59,7 +59,7 @@
         <tr ng-repeat='row in userCollection' ng-click='editUser(row)'>
             <td>{{row.firstName}}</td>
             <td>{{row.lastName}}</td>
-            <td>{{row.dateOfBirth | date : 'yyyy-MM-dd'}}</td>
+            <td class='hidden-sm hidden-xs'>{{row.dateOfBirth | date : 'yyyy-MM-dd'}}</td>
             <td>{{row.address.state}}</td>
         </tr>
         <tr>
